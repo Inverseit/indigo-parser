@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="kk-KK">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <meta name="theme-color" content="#3f51b5">
+  <meta name="csrf-param" content="_csrf-frontend">
+  <meta name="csrf-token"
+    content="6_6Q2e8nr9NpWkzPMYeCXjEXf1d1zERweuyeUP_bMUSei8f0uXjs518DYYt0w-4fHGQ8bjn9fB8joakYq7ZJdw==">
+  <title>Балабақшаға қабылдау туралы жолдама алу</title>
+  <link rel="icon" type="image/png" href="/favicon.png" />
+
+  <link rel="apple-touch-icon" href="/images/apple-icons/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="57x57" href="/images/apple-icons/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-icons/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="76x76" href="/images/apple-icons/apple-touch-icon-76x76.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-icons/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="120x120" href="/images/apple-icons/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-icons/apple-touch-icon-144x144.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="/images/apple-icons/apple-touch-icon-152x152.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-icons/apple-touch-icon-180x180.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css" rel="stylesheet"
+    crossorigin="anonymous" integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e">
+  <link href="/assets/c9c251a7/css/bootstrap.css?v=1681625203" rel="stylesheet">
+  <link href="/css/password-toggle/style.css?v=1689614760" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&amp;display=swap&amp;subset=cyrillic"
+    rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&amp;display=swap&quot; rel=&quot;stylesheet"
+    rel="stylesheet">
+  <link href="/css/loader.css?v=1674925792" rel="stylesheet">
+  <link href="/css/odometer-theme-plaza.css?v=1674925792" rel="stylesheet">
+  <link href="/css/slick.css?v=1674925792" rel="stylesheet">
+  <link href="/css/slick-theme.css?v=1674925792" rel="stylesheet">
+  <link href="/css/alert.css?v=1693327486" rel="stylesheet">
+  <link href="/css/jquery.jscrollpane.lozenge.css?v=1674925792" rel="stylesheet">
+  <link href="/css/jquery.jscrollpane.css?v=1674925792" rel="stylesheet">
+  <link href="/css/nice-select.css?v=1674925792" rel="stylesheet">
+  <link href="/css/fancybox/core.css?v=1674925792" rel="stylesheet">
+  <link href="/css/fancybox/jquery.fancybox.css?v=1674925792" rel="stylesheet">
+  <link href="/css/bootstrap-datepicker.css?v=1674925792" rel="stylesheet">
+  <link href="/css/style.css?v=1725358442" rel="stylesheet">
+  <link href="/css/themes/autumn.css?v=1674925792" rel="stylesheet">
+  <style>
+    .btn.btn-outline-indigo {
+      border-width: 1px;
+      line-height: 1.45;
+    }
+
+    .contacts-wrap .accompanying-files__input-doc label span {
+      padding: 6px 15px;
+    }
+
+    .hide-all-page-to-behind-transparent-block {
+      position: fixed;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 9999;
+    }
+
+    .attendance .calendar .holiday {
+      background: rgba(255, 178, 178, 1);
+    }
+
+    .attendance .calendar .visit {
+      background: rgba(255, 255, 255, 1);
+    }
+
+    .attendance .calendar .weekend {
+      background: rgba(255, 229, 229, 1);
+    }
+
+    .attendance .calendar td {
+      border: 1px solid #DEDEDE;
+      background: #E9E9E9;
+    }
+
+    .attendance .calendar th {
+      border-bottom: 1px solid #DEDEDE;
+    }
+
+    .contacts-wrap .form-group label.buttons-bar__add {
+      margin-bottom: auto;
+      color: #D8D8D8;
+    }
+
+    .contacts-wrap .btn-file-close {
+      flex: none;
+    }
+
+    .contacts-wrap .btn-file-input {
+      flex: 3;
+    }
+
+    .contacts-wrap .file-name-description {
+      width: 100%;
+    }
+
+    .contacts-wrap .file-name-description a:before {
+      width: 20px;
+    }
+
+    .contacts-wrap .file-name-description {
+      display: flex;
+    }
+
+    .contacts-wrap .file-name-description a {
+      flex: 3;
+    }
+
+    .watermark-background {
+      background-image: url("/kz/site/watermark");
+    }
+
+    .g-list-view-custom .g-list-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .g-list-view-custom .g-list-item:first-child {
+      padding-top: 1rem;
+    }
+
+    .password-requirements-block .requirement {
+      color: red;
+      font-size: .8125rem;
+      position: relative;
+      padding-left: 15px;
+    }
+
+    .password-requirements-block .requirement:before,
+    .password-requirements-block .requirement:after {
+      position: absolute;
+      color: red;
+      left: 5px;
+      top: 3px;
+      content: ' ';
+      height: 13px;
+      width: 2px;
+      background-color: red;
+    }
+
+    .password-requirements-block .requirement:before {
+      transform: rotate(45deg);
+    }
+
+    .password-requirements-block .requirement:after {
+      transform: rotate(-45deg);
+    }
+
+    .password-requirements-block .requirement .wrap-success {
+      position: absolute;
+      top: 11px;
+      left: 0;
+    }
+
+    .requirement .wrap-success .check-sign {
+      position: absolute;
+      background: green;
+      display: none;
+    }
+
+    #check-part-1.check-sign {
+      width: 6px;
+      height: 2px;
+      transform: rotate(45deg);
+    }
+
+    #check-part-2.check-sign {
+      width: 10px;
+      height: 2px;
+      transform: rotate(-45deg);
+      left: 3px;
+      top: -2px;
+    }
+
+    .is-valid.requirement:before,
+    .is-valid.requirement:after {
+      display: none;
+    }
+
+    .is-valid.requirement {
+      color: green;
+    }
+
+    .is-valid.requirement .wrap-success .check-sign {
+      display: block;
+    }
+
+    .login-form label.small-font {
+      font-size: 1rem;
+    }
+
+    .login-form .checkbox-list {
+      width: 40%;
+    }
+
+    @media (max-width: 992px) {
+      .login-form .checkbox-list {
+        width: 60%;
+      }
+
+      .login-form label.small-font {
+        font-size: 1.2rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .login-form .checkbox-list {
+        width: 100%;
+      }
+
+      .login-form label.small-font {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+
+<body data-lang="kz" data-zoom="15">
+  <!-- Yandex.Metrika counter -->
+  <script
+    type="text/javascript"> (function (m, e, t, r, i, k, a) {
+        m[i] = m[i] || function () {
+          (m[i].a = m[i].a || []).push(arguments)
+        };
+        m[i].l = 1 * new Date();
+        k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+      })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+      ym(61595896, "init", { clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: true });</script>
+  <noscript>
+    <div><img src="https://mc.yandex.ru/watch/61595896" style="position:absolute; left:-9999px;" alt="" /></div>
+  </noscript> <!-- /Yandex.Metrika counter -->
+  <div class="body-wrapper">
+    <header>
+      <div class="sub-header">
+        <div class="container">
+          <div class="d-flex">
+            <div class="dropdown mobile-dropdown align-self-center">
+              <a class="dropdown-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="sometext">Пайдалы ақпарат</span> </a>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="https://indigo24.kz/kz/faq/19" target="_blank">Мектепке дейінгі ұйымға
+                  қалай қабылдайды?</a> <a class="dropdown-item" href="https://indigo24.kz/kz/faq/48"
+                  target="_blank">Бос орындар қалай бөлінеді</a> <a class="dropdown-item"
+                  href="https://indigo24.kz/kz/faq" target="_blank">Жиі қойылатын сұрақ пен оның жауабы</a> <a
+                  class="dropdown-item" href="https://adilet.zan.kz/kaz" target="_blank">Нормативтік-құқықтық база</a>
+                <a class="dropdown-item" href="https://indigo24.kz/kz/faq" target="_blank">Білімдер базасы</a> <a
+                  href="#" onclick="jivo_api.open(); return false;" class="dropdown-item">Техникалық қолдау</a>
+              </div>
+            </div>
+            <div id="clock" class="clock-block ml-auto align-self-center">
+              Эталондық сервер уақыты 300928 :
+              <span id="clock-text">2024.10.03 00:32</span>
+            </div>
+            <div class="ml-auto align-self-center city-seletc-block">
+              <a href="#" class="city-seletc" data-toggle="modal" data-target="#cityModal">
+                <span class="d-none d-sm-block">Караганды қ.</span>
+              </a>
+            </div>
+
+            <ul class="lang-select align-self-center">
+              <li class="active">
+                <a onclick="app.setLanguage(this.pathname); return false;" href="/kz/reserv/get">Қазақша</a>
+              </li>
+              <li>
+                <a onclick="app.setLanguage(this.pathname); return false;" href="/ru/reserv/get">Русский</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="main-header">
+        <div class="container">
+          <nav class="navbar navbar-expand-lg navbar-light nav-indigo">
+            <a href="#" class="btn-mobile-menu navbar-toggle" data-toggle="offcanvas" data-target="#myNavmenu"
+              data-canvas="body"></a>
+            <div id="mobileMenu" class="mobile-menu">
+              <div class="menu-header">
+                <span class="close-menu"></span>
+                <h4>Навигация</h4>
+              </div>
+              <div class="menu-body">
+                <ul id="menu-list">
+                  <li><a href="http://indigo24.kz/?r_off=1">Басты бет</a></li>
+                  <li>
+                    <a href="https://www.instagram.com/bilim_webline/?hl=ru">Жаңалықтар</a>
+                  </li>
+                  <li><a class="" href="/kz/cabinet/personal/login">Жеке кабинет</a></li>
+                  <li><a class="text-warning close-menu" href="/kz/callback-form" data-toggle="modal"
+                      data-target="#feedbackModal">Сыбайлас жемқорлық туралы хабарлау</a></li>
+                  <li><a data-toggle="collapse" href="#collapseMenu1" role="button" aria-expanded="false"
+                      aria-controls="collapseExample" class="menu-collapse collapsed">Көрсетілетін қызметтер</a>
+                    <ul class="collapse" id="collapseMenu1">
+                      <li>
+                        <a href="/kz/list">Мектепке дейінгі ұйымдардың тізімі</a>
+                      </li>
+                      <li>
+                        <a href="/kz/garden/list?map=1">Мектепке дейінгі ұйымдардың картасы</a>
+                      </li>
+                      <li>
+                        <a href="/kz/information/registry">Бос орындар</a>
+                      </li>
+                      <li>
+                        <a href="/kz/queue">Өтініштер кезегі</a>
+                      </li>
+                      <li>
+                        <a href="/kz/statement/step-1">Кезекке өтініш беру </a>
+                      </li>
+                      <li>
+                        <a href="/kz/information/direction">Қабылдау туралы жолдаманы алу</a>
+                      </li>
+                      <li>
+                        <a href="/kz/request/check">Кезектегі нөмірді тексеру</a>
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li>
+                    <a href="#" onclick="jivo_api.open(); return false;">
+                      Техникалық қолдау </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <a class="navbar-brand main-logo" href="/kz" aria-label="Indig">
+              <img src="/images/logo.svg" />
+            </a>
+            <div class="collapse navbar-collapse navbar-indigo" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="http://indigo24.kz/?r_off=1">Басты бет</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/kz/list">Мектепке дейінгі ұйымдар <span
+                      class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/kz/statement/step-1">Кезекке тұру</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/kz/information/registry">Жолдама алу</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/kz/request/check">Кезекті тексеру</a>
+                </li>
+              </ul>
+              <div class="user-header dropdown">
+                <a href="#" class="dropdown-toggle" id="dropdownUserInfo" data-toggle="dropdown">
+                  <div class="user-view-header d-flex align-items-center">
+                    <div class="user-avatar">
+                      <img class="img-fluid  img-circular" src="/images/user-no-avatar.png" alt="">
+                    </div>
+                    <div class="user-info-header">
+                      <div class="user-name">
+                        <span class="user-panel-text">НИЛЬДИБАЕВА</span>
+                        <span class="user-panel-text ml-1">АЙДАНА</span>
+                      </div>
+                      <div class="user-iin">
+                        ЖСН 920518451287 </div>
+                    </div>
+                  </div>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-right user--menu-list" x-placement="bottom-end">
+                  <li><a href="/kz/cabinet/event-history" class="dropdown-item">Оқиғалар таспасы</a></li>
+                  <li><a href="/kz/cabinet/request/list" class="dropdown-item">Менің өтініштерім</a></li>
+                  <li><a href="/kz/cabinet/reserv/list" class="dropdown-item">Менің жолдамаларым</a></li>
+                  <li><a href="/kz/cabinet/contracts/index" class="dropdown-item">Менің келісімшарттарым</a></li>
+                  <li><a href="/kz/cabinet/attendance/index" class="dropdown-item">Сабаққа қатысу табельдері</a></li>
+                  <li><a href="/kz/cabinet/profile/index" class="dropdown-item">Сауалнама</a></li>
+                  <li><a href="/kz/cabinet/conventions" class="dropdown-item">Келісімдер мен шектеулер</a></li>
+                  <li><a href="/kz/cabinet/settings" class="dropdown-item">Баптаулар</a></li>
+                  <li><a class="dropdown-item" href="/kz/cabinet/logout" data-method="post">Шығу</a></li>
+                </ul>
+              </div>
+            </div>
+            <a href="/kz/cabinet/request/list" class="btn-mobile-login"></a>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Modals -->
+    <div class="modal fade" id="cityModal" tabindex="-1" role="dialog" aria-labelledby="cityModal" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"><span class="sometext">Қаланы таңдаңыз:</span></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" style="min-height: 300px;">
+            <form>
+              <div class="form-group">
+                <input type="text" class="form-control" id="search_city" placeholder="Елді мекеннің атауы">
+              </div>
+            </form>
+            <div class="accordion accordion-city" id="accordionCity">
+            </div>
+            <ul class="modal-help-link">
+              <li><a href="#">Қаланы немесе аудан орталығын не үшін таңдау қажет?</a></li>
+              <li><a href="#">Тізімде мен тұратын қала немесе аудан орталығы жоқ, мен не істеуім керек?</a></li>
+            </ul>
+            <div class="geo-loading city-loading" style="display: none;">
+              <div class="loader"></div>
+              <p>Жүктеу <span id="city-name-change"></span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      var globalCitiesList = [{ "Name": "Республикалық маңызы бар қалалар", "cities": [{ "Id": 1, "Type": 1, "Name": "Астана қ.", "Url": "https:\/\/indigo-nursultan.e-orda.kz\/kz", "isHide": 0 }, { "Id": 3, "Type": 1, "Name": "Шымкент қ.", "Url": "https:\/\/indigo-shymkent.e-orda.kz\/kz", "isHide": 0 }] }, { "Name": "Атырау облысы", "cities": [{ "Id": 23, "Type": 2, "Name": "Атырау қ.", "Url": "https:\/\/indigo-atyrau.e-orda.kz\/kz", "isHide": 0 }, { "Id": 24, "Type": 2, "Name": "Құлсары қ.", "Url": "https:\/\/indigo-kulsary-atyrau.e-orda.kz\/kz", "isHide": 0 }, { "Id": 120, "Type": 3, "Name": "Жылыой ауданы", "Url": "https:\/\/indigo-zhylyoi-atyrau.e-orda.kz\/kz", "isHide": 0 }, { "Id": 3882, "Type": 3, "Name": "Индер ауданы", "Url": "https:\/\/indigo-inder-atyrau.e-orda.kz\/kz", "isHide": 0 }, { "Id": 37, "Type": 3, "Name": "Қызылқоға ауданы", "Url": "https:\/\/indigo-kyzylkoga-atyrau.e-orda.kz\/kz", "isHide": 0 }, { "Id": 38, "Type": 3, "Name": "Құрманғазы ауданы", "Url": "https:\/\/indigo-kurmangazy-atyrau.e-orda.kz\/kz", "isHide": 0 }, { "Id": 39, "Type": 3, "Name": "Мақат ауданы", "Url": "https:\/\/indigo-makat-atyrau.e-orda.kz\/kz", "isHide": 0 }, { "Id": 40, "Type": 3, "Name": "Махамбет ауданы", "Url": "https:\/\/indigo-makhambet-atyrau.e-orda.kz\/kz", "isHide": 0 }, { "Id": 27, "Type": 4, "Name": "Ақкиізтоғай ауылдық округі", "Url": "https:\/\/indigo-akkiiztogai-atyrau.e-orda.kz\/kz", "isHide": 0 }, { "Id": 123, "Type": 4, "Name": "Аққыстау ауылдық округі", "Url": "https:\/\/indigo-akkistau-atyrau.e-orda.kz\/kz", "isHide": 0 }, { "Id": 3788, "Type": 4, "Name": "Алмалы ауылдық округі", "Url": "https:\/\/indigo-almaly-atyrau.e-orda.kz\/kz", "isHide": 0 }, { "Id": 28, "Type": 4, "Name": "Жаңа Қаратон ауылдық округі", "Url": "https:\/\/indigo-zhanakaraton-atyrau.e-orda.kz\/kz", "isHide": 0 }, { "Id": 128, "Type": 4, "Name": "Жанбай ауылдық округі", "Url": "https:\/\/indigo-zhanbai-atyrau.e-orda.kz\/kz", "isHide": 0 }, { "Id": 25, "Type": 4, "Name": "Жем ауылдық округі", "Url": "https:\/\/indigo-zhem-atyrau.e-orda.kz\/kz", "isHide": 0 }, { "Id": 129, "Type": 4, "Name": "Зинеден ауылдық округі", "Url": "https:\/\/indigo-zaburun-atyrau.e-orda.kz\/kz", "isHide": 0 }, { "Id": 124, "Type": 4, "Name": "Исатай ауылдық округі", "Url": "https:\/\/indigo-isatai-atyrau.e-orda.kz\/kz", "isHide": 0 }, { "Id": 125, "Type": 4, "Name": "Қамысқала ауылдық округі", "Url": "https:\/\/indigo-kamyskala-atyrau.e-orda.kz\/kz", "isHide": 0 }, { "Id": 26, "Type": 4, "Name": "Қараарна ауылдық округі", "Url": "https:\/\/indigo-karaarnin-atyrau.e-orda.kz\/kz", "isHide": 0 }, { "Id": 29, "Type": 4, "Name": "Қосшағыл ауылдық округі", "Url": "https:\/\/indigo-koschagyl-atyrau.e-orda.kz\/kz", "isHide": 0 }, { "Id": 3785, "Type": 4, "Name": "Майкөмген ауылдық округі", "Url": "https:\/\/indigo-maikumgen-atyrau.e-orda.kz\/kz", "isHide": 0 }, { "Id": 126, "Type": 4, "Name": "Нарын ауылдық округі", "Url": "https:\/\/indigo-naryn-atyrau.e-orda.kz\/kz", "isHide": 0 }, { "Id": 127, "Type": 4, "Name": "Тұщықұдық ауылдық округі", "Url": "https:\/\/indigo-tushykudyk-atyrau.e-orda.kz\/kz", "isHide": 0 }] }, { "Name": "Жамбыл облысы", "cities": [{ "Id": 115, "Type": 2, "Name": "Тараз қ.", "Url": "https:\/\/indigo-taraz.e-orda.kz\/kz", "isHide": 0 }] }, { "Name": "Батыс Қазақстан облысы", "cities": [{ "Id": 61, "Type": 3, "Name": "Бөкейордасы ауданы", "Url": "https:\/\/indigo-bokeyorda.e-orda.kz\/kz", "isHide": 0 }, { "Id": 66, "Type": 3, "Name": "Казталовка ауданы", "Url": "https:\/\/indigo-kaztal.e-orda.kz\/kz", "isHide": 0 }, { "Id": 65, "Type": 3, "Name": "Бәйтерек\r\n ауданы", "Url": "https:\/\/indigo-baiterek.e-orda.kz\/kz", "isHide": 0 }] }, { "Name": "Қарағанды облысы", "cities": [{ "Id": 72, "Type": 2, "Name": "Абай қ.", "Url": "https:\/\/indigo-bilim-otdel.e-orda.kz\/kz", "isHide": 0 }, { "Id": 73, "Type": 2, "Name": "Балқаш қ.", "Url": "https:\/\/indigo-balkhash.e-orda.kz\/kz", "isHide": 0 }, { "Id": 76, "Type": 2, "Name": "Караганды қ.", "Url": "https:\/\/indigo-kargoo.e-orda.kz\/kz", "isHide": 0 }, { "Id": 77, "Type": 2, "Name": "Приозерск қ.", "Url": "https:\/\/indigo-bilim-priozersk.e-orda.kz\/kz", "isHide": 0 }, { "Id": 78, "Type": 2, "Name": "Саран қ.", "Url": "https:\/\/indigo-obrazovanie-saran.e-orda.kz\/kz", "isHide": 0 }, { "Id": 80, "Type": 2, "Name": "Теміртау қ.", "Url": "https:\/\/indigo-ootemirtau.e-orda.kz\/kz", "isHide": 0 }, { "Id": 81, "Type": 2, "Name": "Шахтинск қ.", "Url": "https:\/\/indigo-shahtinsk-edu.e-orda.kz\/kz", "isHide": 0 }, { "Id": 1824, "Type": 3, "Name": "Абай ауданы", "Url": "https:\/\/indigo-araion.e-orda.kz\/kz", "isHide": 0 }, { "Id": 3796, "Type": 3, "Name": "Ақтоғай ауданы", "Url": "https:\/\/indigo-aktogai.e-orda.kz\/kz", "isHide": 0 }, { "Id": 3790, "Type": 3, "Name": "Бұқар жырау ауданы", "Url": "https:\/\/indigo-bukhar-zhirau.e-orda.kz\/kz", "isHide": 0 }, { "Id": 3783, "Type": 3, "Name": "Қарқаралы ауданы", "Url": "https:\/\/indigo-karkaraly.e-orda.kz\/kz", "isHide": 0 }, { "Id": 3791, "Type": 3, "Name": "Нұра ауданы", "Url": "https:\/\/indigo-nurin.e-orda.kz\/kz", "isHide": 0 }, { "Id": 3793, "Type": 3, "Name": "Осакаров ауданы", "Url": "https:\/\/indigo-osakar.e-orda.kz\/kz", "isHide": 0 }, { "Id": 3792, "Type": 3, "Name": "Шет ауданы", "Url": "https:\/\/indigo-shetsk.e-orda.kz\/kz", "isHide": 0 }] }, { "Name": "Қостанай облысы", "cities": [{ "Id": 3880, "Type": 1, "Name": "Қостанай облысы білім басқармасының ведомстволық бағынысты ұйымдары", "Url": "https:\/\/indigo-kostanai-bilim.e-orda.kz\/kz", "isHide": 0 }, { "Id": 86, "Type": 2, "Name": "Арқалық қ.", "Url": "https:\/\/indigo-arkalyk-kostanay.e-orda.kz\/kz", "isHide": 0 }, { "Id": 82, "Type": 2, "Name": "Қостанай қ.", "Url": "https:\/\/indigo-kst-goo.e-orda.kz\/kz", "isHide": 0 }, { "Id": 87, "Type": 2, "Name": "Лисаков қ.", "Url": "https:\/\/indigo-lsk-kostanay.e-orda.kz\/kz", "isHide": 0 }, { "Id": 83, "Type": 2, "Name": "Рудный қ.", "Url": "https:\/\/indigo-rudoo.e-orda.kz\/kz", "isHide": 0 }, { "Id": 88, "Type": 3, "Name": "Алтынсарин ауданы", "Url": "https:\/\/indigo-altynsarin-kostanay.e-orda.kz\/kz", "isHide": 0 }, { "Id": 84, "Type": 3, "Name": "Амангелді ауданы", "Url": "https:\/\/indigo-amangeldy-kostanay.e-orda.kz\/kz", "isHide": 0 }, { "Id": 90, "Type": 3, "Name": "Әулиекөл ауданы", "Url": "https:\/\/indigo-aulekol-roo.e-orda.kz\/kz", "isHide": 0 }, { "Id": 109, "Type": 3, "Name": "Денисов ауданы", "Url": "https:\/\/indigo-denroo.e-orda.kz\/kz", "isHide": 0 }, { "Id": 112, "Type": 3, "Name": "Жангелдин ауданы", "Url": "https:\/\/indigo-zhangeldy-kostanay.e-orda.kz\/kz", "isHide": 0 }, { "Id": 3787, "Type": 3, "Name": "Жітіқара ауданы", "Url": "https:\/\/indigo-zhitikara-kostanay.e-orda.kz\/kz", "isHide": 0 }, { "Id": 117, "Type": 3, "Name": "Қамысты ауданы", "Url": "https:\/\/indigo-kamisti-kostanay.e-orda.kz\/kz", "isHide": 0 }, { "Id": 85, "Type": 3, "Name": "Қарабалық ауданы", "Url": "https:\/\/indigo-karabalyk-kostanay.e-orda.kz\/kz", "isHide": 0 }, { "Id": 3879, "Type": 3, "Name": "Қарасу ауданы", "Url": "https:\/\/indigo-karasu-kostanay.e-orda.kz\/kz", "isHide": 0 }, { "Id": 111, "Type": 3, "Name": "Қостанай ауданы", "Url": "https:\/\/indigo-kostregion-kostanay.e-orda.kz\/kz", "isHide": 0 }, { "Id": 3781, "Type": 3, "Name": "Мендіқара ауданы", "Url": "https:\/\/indigo-mendikara-kostanay.e-orda.kz\/kz", "isHide": 0 }, { "Id": 3786, "Type": 3, "Name": "Наурзум ауданы", "Url": "https:\/\/indigo-naurzum-kostanay.e-orda.kz\/kz", "isHide": 0 }, { "Id": 89, "Type": 3, "Name": "Бейімбет Майлин ауданы", "Url": "https:\/\/indigo-taran-kostanay.e-orda.kz\/kz", "isHide": 0 }, { "Id": 118, "Type": 3, "Name": "Сарыкөл ауданы", "Url": "https:\/\/indigo-sarykol-kostanay.e-orda.kz\/kz", "isHide": 0 }, { "Id": 121, "Type": 3, "Name": "Ұзынкөл ауданы", "Url": "https:\/\/indigo-uzunkol-kostanay.e-orda.kz\/kz", "isHide": 0 }, { "Id": 110, "Type": 3, "Name": "Фёдоров ауданы", "Url": "https:\/\/indigo-fedorovka-kostanay.e-orda.kz\/kz", "isHide": 0 }] }, { "Name": "Маңғыстау облысы", "cities": [{ "Id": 3860, "Type": 2, "Name": "Ақтау қ.", "Url": "https:\/\/indigo-aktau.e-orda.kz\/kz", "isHide": 0 }, { "Id": 3862, "Type": 2, "Name": "Жаңаөзен қ.", "Url": "https:\/\/indigo-zhanaozen.e-orda.kz\/kz", "isHide": 0 }, { "Id": 3864, "Type": 3, "Name": "Бейнеу ауданы", "Url": "https:\/\/indigo-beyneu.e-orda.kz\/kz", "isHide": 0 }, { "Id": 3863, "Type": 3, "Name": "Қарақия ауданы", "Url": "https:\/\/indigo-karakiya.e-orda.kz\/kz", "isHide": 0 }, { "Id": 3861, "Type": 3, "Name": "Маңғыстау ауданы", "Url": "https:\/\/indigo-mangystau.e-orda.kz\/kz", "isHide": 0 }, { "Id": 3865, "Type": 3, "Name": "Мұнайлы ауданы", "Url": "https:\/\/indigo-munayli.e-orda.kz\/kz", "isHide": 0 }, { "Id": 3866, "Type": 3, "Name": "Түпқараған ауданы", "Url": "https:\/\/indigo-tupkaragan.e-orda.kz\/kz", "isHide": 0 }] }, { "Name": "Абай облысы", "cities": [{ "Id": 41, "Type": 2, "Name": "Курчатов қ.", "Url": "https:\/\/indigo-kurchatov.e-orda.kz\/kz", "isHide": 0 }, { "Id": 44, "Type": 2, "Name": "Семей қ.", "Url": "https:\/\/indigo-bilim-semey.e-orda.kz\/kz", "isHide": 0 }] }, { "Name": "Ұлытау облысы", "cities": [{ "Id": 74, "Type": 2, "Name": "Жезқазған қ.", "Url": "https:\/\/indigo-jezkazgan.e-orda.kz\/kz", "isHide": 0 }, { "Id": 75, "Type": 2, "Name": "Қаражал қ.", "Url": "https:\/\/indigo-karazhal-goo.e-orda.kz\/kz", "isHide": 0 }, { "Id": 79, "Type": 2, "Name": "Сәтбаев қ.", "Url": "https:\/\/indigo-satpaev-obr.e-orda.kz\/kz", "isHide": 0 }, { "Id": 3795, "Type": 3, "Name": "Жаңаарқа ауданы", "Url": "https:\/\/indigo-zhanaarka.e-orda.kz\/kz", "isHide": 0 }, { "Id": 3794, "Type": 3, "Name": "Ұлытау ауданы", "Url": "https:\/\/indigo-ulytau.e-orda.kz\/kz", "isHide": 0 }] }, { "Name": "Павлодар облысы", "cities": [{ "Id": 116, "Type": 2, "Name": "Ақсу қ.", "Url": "https:\/\/indigo-aksu.e-orda.kz\/kz", "isHide": 0 }, { "Id": 113, "Type": 2, "Name": "Павлодар қ.", "Url": "https:\/\/indigo-pavlodar.e-orda.kz\/kz", "isHide": 0 }, { "Id": 3806, "Type": 2, "Name": "Екібастұз қ.", "Url": "https:\/\/indigo-ekibastuz.e-orda.kz\/kz", "isHide": 0 }, { "Id": 119, "Type": 3, "Name": "Ақтоғай ауданы", "Url": "https:\/\/indigo-aktogay-edu.e-orda.kz\/kz", "isHide": 0 }, { "Id": 3797, "Type": 3, "Name": "Баянауыл ауданы", "Url": "https:\/\/indigo-bayanaul.e-orda.kz\/kz", "isHide": 0 }, { "Id": 3798, "Type": 3, "Name": "Железин ауданы", "Url": "https:\/\/indigo-zhelezinsk.e-orda.kz\/kz", "isHide": 0 }, { "Id": 3801, "Type": 3, "Name": "Павлодар ауданы", "Url": "https:\/\/indigo-pavlodar-raion.e-orda.kz\/kz", "isHide": 0 }] }, { "Name": "Солтүстік Қазақстан облысы", "cities": [{ "Id": 91, "Type": 2, "Name": "Петропавл қ.", "Url": "https:\/\/indigo-petropavl.e-orda.kz\/kz", "isHide": 0 }, { "Id": 94, "Type": 3, "Name": "Аққайың ауданы", "Url": "https:\/\/indigo-roo-ak.e-orda.kz\/kz", "isHide": 0 }, { "Id": 95, "Type": 3, "Name": "Есіл ауданы", "Url": "https:\/\/indigo-roo-esl.e-orda.kz\/kz", "isHide": 0 }, { "Id": 100, "Type": 3, "Name": "Ғабит Мүсірепов атындағы аудан", "Url": "https:\/\/indigo-musrepov.e-orda.kz\/kz", "isHide": 0 }] }];
+    </script>
+    <nav aria-label="breadcrumb" class="breadcrumbs d-none d-sm-block">
+      <div class="container">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/kz">Басы</a></li>
+          <li class="breadcrumb-item"><a href="/kz/cabinet/request/list">Менің өтініштерім</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Балабақшаға қабылдау туралы жолдама алу</li>
+        </ol>
+      </div>
+    </nav>
+    <div class="inner-container-bg">
+      <div class="container">
+        <header class="body-header">
+          <h1 class="body-title">Балабақшаға қабылдау туралы жолдама алу</h1>
+          <p class="body-message-info">Бос орынды таңдау және балабақшаға қабылдау туралы электрондық жолдаманы алу</p>
+          <a href="#help" class="btn-header-help btn btn-outline-indigo" title="Бөлім бойынша ақпарат">Көмек</a>
+        </header>
+      </div>
+
+      <div class="position-relative">
+        <div class="container">
+          <main class="s-data" id="gn_table">
+            <div class="page-info check-info p-t-0">
+              <h4 class="page-info-small">Баланы мектепке дейінгі ұйымға қабылдау үшін мектепке дейінгі ұйымға
+                электрондық жолдама алу қажет. Ол үшін:</h4>
+              <ol>
+                <li>Жолдама алғыңыз келетін баланың ЖСН/аты-жөнін және өтініш нөмірін көрсетіңіз</li>
+                <li>"Бос орындарды іздеу" түймешігін басыңыз</li>
+                <li>Жүйе балаңыздың жасына сай келетін топтары бар барлық мектепке дейінгі ұйымдарды көрсетеді</li>
+                <li>Бос орындардың тізімін қарап, қабылдану үшін мектепке дейінгі ұйымды және топты таңдаңыз </li>
+                <li>"Жолдаманы алу" түймешігін басыңыз</li>
+              </ol>
+              <div class="g-callout g-callout-info">
+                <h5>Ескертпе</h5>
+                <p>Егер балаңыз Қазақстан Республикасының резиденті емес болса және оның ЖСН болмаса, онда оны кезекке
+                  қою кезінде жүйенің берген нөмірін көрсетіңіз (жеке кабинеттен қараңыз). </p>
+              </div>
+            </div>
+            <form id="w0" class="check__form bg-form-block bg-check" action="/kz/reserv/get" method="post">
+              <input type="hidden" name="_csrf-frontend"
+                value="6_6Q2e8nr9NpWkzPMYeCXjEXf1d1zERweuyeUP_bMUSei8f0uXjs518DYYt0w-4fHGQ8bjn9fB8joakYq7ZJdw==">
+              <div class="g-block-center g-check-center">
+                <div class="form-group field-freeplacessearch-iin">
+
+                  <select id="freeplacessearch-iin" class="form-control" name="FreePlacesSearch[iin]" required>
+                    <option value="0_200311500967_5381140">200311500967, №5381140 өтініш бойынша</option>
+                  </select>
+
+                  <div class="help-block"></div>
+                </div> <!--            <div class="form-group">-->
+                <!--                <select class="form-control" id="exampleSelect1" name="FreePlacesSearch[language]">-->
+                <!--                    <option value="0">-->
+                <?//= Yii::t('app', 'Choose a parenting language') ?><!--</option>-->
+                <!--                    --> <!--                    <option value="-->
+                <?//=$lang_id?><!--">-->
+                <?//= $lang_name ?><!--</option>-->
+                <!--                    --> <!--                </select>-->
+                <!--            </div>-->
+                <div class="form-group field-freeplacessearch-requestnumber">
+
+                  <input type="hidden" id="freeplacessearch-requestnumber" class="form-control"
+                    name="FreePlacesSearch[requestNumber]">
+
+                  <div class="help-block"></div>
+                </div>
+                <button type="submit" class="btn btn-indigo btn-block btn-need-disable"><span class="sometext">Бос
+                    орындарды іздеу</span></button>
+              </div>
+            </form>
+            <div class="page-info check-info">
+              <h3>Ақпарат үшін</h3>
+              <ol>
+                <li>Электрондық жолдама - ата-ананың өтініште көрсеткен телефон нөміріне келетін sms-хабарлама </li>
+                <li>Электрондық хабарламаны басып шығарып, мектепке дейінгі ұйымда көрсетудің қажеті жоқ. Оның
+                  ақпараттық сипаты ғана бар және жолдаманың берілгенін растайды </li>
+                <li>Мектепке дейінгі ұйымға қабылдану үшін ата-ананың жеке куәлігі мен баланың туу туралы куәлігін әкелу
+                  қажет. Балабақша көрсетілген құжаттардағы ЖСН бойынша өзінің ақпараттық жүйесінде электрондық
+                  жолдамаңызды тауып алады.</li>
+              </ol>
+              <h4 class="page-info-small">Назар аударыңыз!</h4>
+              <ol>
+                <li>Электрондық жолдаманың қызмет ету мерзімі 5 жұмыс күн. Егер Сіз осы уақыт ішінде келіп, мектепке
+                  дейінгі ұйымға қабылданбасаңыз, жолдаманың күші жойылады. Өтінішіңіз кезектен уақытша алынып тасталады
+                  және 10 жұмыс күніне стоп-параққа жіберіледі. Сол себепті мектепке дейінгі ұйымға жолдама алмастан
+                  бұрын, өзіңіздің жұмыс кестеңізді дұрыс бағалаңыз.</li>
+                <li>Мектепке дейінгі ұйымға барып бастау үшін қабылданудың өзі жеткіліксіз. Белгіленген нысандағы
+                  медициналық құжаттарды ұсынып, мектепке дейінгі ұйыммен шарт жасасу қажет.</li>
+                <li>Шарт жасасу үшін күнтізбелік 10 күн беріледі. Егер Сіз осы уақыт ішінде шартты жасаса алмасаңыз,
+                  онда мектепке дейінгі ұйымға берілген жолдаманың күші жойылады, ал өтініш 10 жұмыс күніне стоп-параққа
+                  жіберіледі. </li>
+                <li>Жолдаманың қызмет ету мерзімін екі реттен артық өткізіп алған жағдайда, өтініш кезектен алынып
+                  тасталады және архивке жіберіледі.</li>
+              </ol>
+              <h4 class="page-info-small">Ақыл-кеңестер</h4>
+              <ol>
+                <li>Мектепке дейінгі ұйымды таңдау кезінде жағдайды талдаңыз. Мекемелердің саны шектеулі, орын күтіп
+                  жүрген балалардың саны өте көп. Мектепке дейінгі ұйымдардың орналасқан жерінің картасын мұқият қарап
+                  шығыңыз. Дәл үйіңіздің жанында бірқатар себептерге байланысты өзіңізге онша ыңғайлы емес, бірақ бос
+                  орындары бар мектепке дейінгі ұйым болуы мүмкін. Мүмкін орын күтіп жүргенше, осы мектепке дейінгі
+                  ұйымға «қазір және осы жерде» қабылдану ең дұрыс шешіміңіз болар. Оның үстіне, балабақшаға
+                  қабылданғаннан кейін кезекке қайта тұруға тыйым салынбайды.</li>
+                <li>Қабылдану үшін топты таңдау кезінде топтағы балалардың санына назар аударыңыз (жүйе көрсетеді).
+                  Санитариялық нормаларға сәйкес балалардың ең көп саны 25 адамнан аспауға тиіс. Алайда бұл ереже жиі
+                  бұзылады. Жағдайды дұрыс бағалап, санитариялық нормаларды бұзатын мектепке дейінгі ұйымға және топқа
+                  барғыңыз келетіні жөнінде шешімді өзіңіз қабылдаңыз.</li>
+                <li>Егер қазіргі таңда Сіз мектепке дейінгі ұйымға барып жүріп, өзіңізге басқа мектепке дейінгі ұйымды
+                  таңдағыңыз келсе (басқа жерге көшуге байланысты, жекеменшік мектепке дейінгі ұйымғаның орнына
+                  мемлекеттік мектепке дейінгі ұйымды және т.б.), баланың балалар мекемесіне қабылданғанына қарамастан,
+                  кезекке қою туралы өтініш бере аласыз. Жаңа мектепке дейінгі ұйымға жолдама алғаннан кейін қазіргі
+                  барып жүрген мектепке дейінгі ұйымнан шығып кетуіңіз қажет.</li>
+              </ol>
+            </div>
+          </main>
+        </div>
+      </div>
+    </div>
+    <div>
+
+      <footer class="footer padding-index position-relative">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-3 col-md-6 col-12">
+              <a class="f-logo first-block-logo" href="/kz" aria-label="Indigo">
+                <img class="main-footer-logo" src="/images/spring/logo-footer.png" />
+              </a>
+            </div>
+            <div class="col-lg-3 col-md-6 col-12">
+              <a class="f-logo" href="http://e-orda.kz" aria-label="Indig">
+                <img class="main-footer-logo" src="/images/new-year/e-orda-white.svg" />
+              </a>
+            </div>
+            <div class="f-warning col-lg-6 col-12">
+              <div class="row">
+                <div class="col-md-6 col-12 f-link">
+                  <div class="f-header row">
+                    <div class="col-3">
+                      <div class="white-logo__mobile">
+                        <img class="main-footer-logo" src="/images/statistics-icon/icon-6.svg">
+                      </div>
+                    </div>
+                    <div class="col-9">
+                      <h4>Стоп<br />сыбайлас жемқорлық</h4>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 col-12 f-link">
+                  <ul class="f-body f-body-stop">
+                    <li><a class="" href="/kz/callback-form" data-toggle="modal" data-target="#feedbackModal">Сыбайлас
+                        жемқорлық туралы хабарлау</a></li>
+                    <li><a class="" href="/kz/callback-form" data-toggle="modal" data-target="#feedbackModal">Мектепке
+                        дейінгі ұйымға шағымдану</a></li>
+                    <li><a class="" href="/kz/callback-form" data-toggle="modal" data-target="#feedbackModal">Білім беру
+                        бөліміне шағымдану</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr />
+          <div class="row summer-mb">
+            <div class="col-lg-3 col-md-6 col-12 f-link">
+              <div class="f-header">Жоба туралы</div>
+              <ul class="f-body">
+                <li><a href="https://indigo24.kz/kz/faq/43" target="_blank">Порталдың тағайындалуы </a></li>
+                <!-- http://indigo24.kz/faq/tehniceskaa-podderzka/naznacenie-portala -->
+                <!--li></1li-->
+                <li><a href="https://www.instagram.com/bilim_webline/">Жаңалықтар</a></li>
+                <li><a href="/kz/callback-form" data-toggle="modal" data-target="#feedbackModal">Ұсыныстар мен
+                    ескертулер</a></li>
+              </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 col-12 f-link">
+              <div class="f-header">Ашық деректер</div>
+              <ul class="f-body">
+                <li><a href="/kz/information/protocol">Орындарды босату хаттамасы</a></li>
+                <li><a href="/kz/reserv/list">Жолдамаларды беру хаттамасы</a></li>
+                <li><a href="/kz/queue">Өтініштер кезегі</a></li>
+                <li><a href="/kz/information/registry">Бос орындар</a><a href="#"></a></li>
+                <li><a href="/kz/statistic/statistic">Жүйе жұмысының статистикасы</a></li>
+
+              </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 col-12 f-link">
+              <div class="f-header">Пайдалы ақпарат</div>
+              <ul class="f-body">
+                <li><a href="https://indigo24.kz/kz/faq/19" target="_blank">Мектепке дейінгі ұйымға қалай
+                    қабылдайды?</a></li>
+                <li><a href="https://indigo24.kz/kz/faq/48" target="_blank">Бос орындар қалай бөлінеді</a></li>
+                <li><a href="https://indigo24.kz/kz/faq" target="_blank">Жиі қойылатын сұрақ пен оның жауабы</a></li>
+                <li><a href="https://indigo24.kz/kz/faq" target="_blank">Білімдер базасы</a></li>
+              </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 col-12 f-link">
+              <div class="f-header">Техникалық қолдау</div>
+              <ul class="f-body">
+                <li><a href="https://indigo24.kz/kz/faq/43" target="_blank">Тараптардың жауапкершілігі туралы
+                    келісім</a></li>
+                <li><a href="javascript:jivo_api.open()" />Чатта сұрақ қою</a></li>
+                <li><a href="https://indigo24.kz/kz/faq/42" target="_blank">Әлеуметтік желілердің көпшілік оферті</a>
+                </li>
+                <li><a href="https://www.instagram.com/bilim_webline/" target="_blank">Әлеуметтік желілер</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="text-center f-copy">
+            <p>Интернет-ресурс, оның құрылымы, форматты-логикалық бақылау ережелері жəне орналастырылған медиа-контент
+              Қазақстан Республикасының «Авторлық құқық жəне сабақтас құқықтар туралы» заңымен қорғалады.
+              «КДС-ФРАНЧАЙЗИНГ» ЖМ, 2024©</p>
+          </div>
+        </div>
+      </footer>
+      <div class="modal fade" id="feedbackModal" tabindex="-1" role="dialog" aria-labelledby="feedbackModal"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content"></div>
+        </div>
+      </div>
+      <div class="modal" id="defaultModal">
+        <div class="modal-dialog">
+          <div class="modal-content"></div>
+        </div>
+      </div>
+      <div class="banner-wrap">
+      </div>
+
+
+
+      <div id="banner-indigo" class="alert-warning" style="display:none; max-height: 70%; overflow-y: auto;"
+        data-id="ShowBanner_76_Kk"> <b>Құрметті пайдаланушы!</b><br /><br /> 2024 жылғы 29 шілдеден бастап жолдама алу
+        рәсімі өтініш берушілердің жеке кабинеті арқылы қолжетімді болады. Өтініш берушіге жолдама алу үшін жеке
+        кабинетке өту қажет:<br /> 1. «Менің өтініштерім» бөліміне өтіңіз<br /> 2. «Жолдама алу» түймесін
+        басыңыз<br /><br /> Назар аударыңыз! Интернет-порталдың жұмыс ережелерімен және заңнаманың нормативтік
+        талаптарымен мынадай қағидалар орнатылған: <br /> 1) жеке кабинетті тек иесі ғана және бұрын тіркелген құрылғы
+        мен интернет-браузерден ғана қолданылуға тиіс;<br /> 2) мектепке дейінгі ұйымға жолдаманы өтініш берушінің өзі
+        ғана ала алады;<br /> 3) жүйе бөтен адамдарға берілген есептік деректердің барлығын қадағалайды.<br /><br /> Кез
+        келген тізбектелген ережені бұзу жеке кабинеттің бұғатталуына және берілген жолдаманың күшін жоюға алып келеді.
+        Мектепке дейінгі ұйымға көрсетілген шарттарды бұзып, берілген жолдаманың күші жойылатын болады. Бұзушылықтың
+        ескіру мерзімі шектелмеген. Бала мектепке дейінгі ұйымнан шығарылады. Материалдар құқық қорғау органдарына
+        өткізіледі. Интернет-порталды пайдалану жөніндегі келісімнің мәтінін мұқият оқыңыз. Алаяқтыққа сенбеңдер және
+        тәуекелге бармаңыз.<br /> Естеріңізге сала кетейік, Бос орындар туралы мәліметтер күн сайын сағат 18:00-де
+        интернет-порталда «Орындарды босату хаттамасы» бөлімінде қалыптастырылады, ал осы орындарға қолжетімділік келесі
+        күні сағат 7:00-де ашылады (басымдықты ескере отырып).<br /><br /> <a href="/kz/cabinet/personal/login"
+          class="btn btn-indigo-violet btn-lg d-block text-uppercase"> Жеке кабинетке өтіңіз </a> <span
+          class="icon-close alert__close text-white" id="close-banner" data-id="ShowBanner_76_Kk"></span>
+
+      </div>
+    </div>
+
+    <script>
+      var Config = {
+        'FILE_MAX_SIZE': 1048576,
+        'DigitalContractBannerDisabled': 'hide',
+        'IsConfirmRequestPeriod': 'hide',
+        'InfoBannerShow': 'show',
+        'OpenJivo': 0,
+      };
+    </script>
+    <script>var Messages = { "STEP_3_SET_PARENT_IIN": "Ата-анасының ЖСН енгізіңіз", "STEP_3_CHANGE_NUMBER_FILE": "«Туу туралы куәлік» толтыруды қажет етеді.", "SCHOOL_LIST_TYPE_MAP": "Мектепке дейінгі ұйымдардың картасы", "SCHOOL_LIST_TYPE_TABLE": "Мектепке дейінгі ұйымдардың тізімі", "SCHOOL_FREE_TYPE_MAP": "Бос орындар", "SCHOOL_FREE_TYPE_TABLE": "Бос орындар", "CHECK_EDIT_REMOVE_FILE": "Жеңілдік туралы ақпаратты өшіруге сенімдісіз ба?", "CHECK_EDIT_REMOVE_CORRECTIONAL_FILE": "Мектепке дейінгі түзету немесе санаторийлік ұйымға жолдаманы жоюдан кейін өтініш негізгі кезекке түседі. Мектепке дейінгі түзету немесе санаторийлік ұйымға жолдаманы жоюды растайсыз ба?", "SELECT_FILE": "Файлды таңдау", "EDIT_BUTTON": "Өзгерту", "IIN_VALIDATION": "ЖСН 12 саннан тұруы керек", "TEMP_DISABLED": "Қызмет уақытша көрсетілмейді. Нұр-Сұлтан қаласын жүйеге қосу жұмыстары әлі аяқталмаған. Іске қосудың жоспарланатын мерзімі 2019 жылдың 10 маусымы", "UPDATE_BENEFITS": "Жеңілдіктер жаңарту", "SHOW_BENEFITS": "Жеңілдікті қарау", "CANCEL_BENEFITS": "Жеңілдікті алып тастаңыз", "SAVE_BENEFITS": "Жеңілдіктер сақтау", "CHANGE_BIG_FAMILY": "Өзгерту", "CANCEL_STATEMENT": "Өтінішті кезектен өшіру", "SHOW_MORE": "Тағы көрсету", "CANCEL": "Күшін жою", "DELETE": "Жою", "NO_SUPPORT": "Support offline message", "SUPPORT_OFF": "<div>\n          <h4 class=\"alert-heading\">Кешірім сұраймыз, Сіз жұмыс емес уақытында жолықтыңыз.</h4>\n          <p>Техникалық қолдау жұмысының кестесі: жұмыс күндері сағат 09:00 бастап - 18:00 дейін.</p>\n          <hr>\n          <p class=\"mb-0\">Жұмыс күні басталғаннан кейін парақшаны жаңартыңыз және тағы бір рет кіріп көріңіз.<br>Рахмет</p>\n        </div>", "READ_MORE": "Толығырақ", "POSTED": "Жарияланды", "SOCKET_CONNECT_ERROR": "QR кодын жасау қатесі", "SOCKET_CONNECT_CLOSED": "QR кодын генерациялау кезеңінің аяқталуына байланысты мүмкін емес", "INCORRECT_IIN": "Дұрыс емес ЖСН", "SUPPORT_BUSY": "Кешіріңіз, барлық операторлар бос емес.<br/>бірінші босатылған оператор жақын арада Сізбен байланысады", "BENEFIT_IS_DELETED_STATUS": "Жеңілдік алынып тасталды", "BENEFIT_IS_DELETED_MESSAGE": "Жеңілдік жоқ" }</script>
+    <div class="alert alert--hide" style="max-height: 85vh; overflow-y: auto;"></div>
+
+    <script src="/assets/939f487/jquery.min.js?v=1681625203"></script>
+    <script src="/assets/1451fdd5/yii.js?v=1681625203"></script>
+    <script src="/assets/1451fdd5/yii.validation.js?v=1681625203"></script>
+    <script src="/assets/1451fdd5/yii.activeForm.js?v=1681625203"></script>
+    <script src="/assets/c9c251a7/js/bootstrap.bundle.js?v=1681625203"></script>
+    <script src="/js/password-toggle/index.js?v=1698061311"></script>
+    <script src="/js/jquery.jscrollpane.min.js?v=1674925792"></script>
+    <script src="/js/odometer.js?v=1674925792"></script>
+    <script src="/js/slick.min.js?v=1674925792"></script>
+    <script src="/js/uniform.min.js?v=1674925792"></script>
+    <script src="/js/jquery.spincrement.min.js?v=1674925792"></script>
+    <script src="/js/jquery.touchSwipe.min.js?v=1674925792"></script>
+    <script src="/js/inputmask/jquery.inputmask.bundle.min.js?v=1674925792"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
+    <script src="/js/jquery.countdown.min.js?v=1674925792"></script>
+    <script src="/js/site2.js?v=1674925792"></script>
+    <script src="/js/jquery.nice-select.min.js?v=1674925792"></script>
+    <script src="/js/app.js?v=1693327486"></script>
+    <script src="/js/moment/moment.js?v=1674925792"></script>
+    <script src="/js/moment/moment-ru.js?v=1674925792"></script>
+    <script src="/js/fancybox/jquery.fancybox.js?v=1674925792"></script>
+    <script src="/js/fancybox/core.js?v=1674925792"></script>
+    <script src="/js/shorten.js?v=1674925792"></script>
+    <script src="/js/city-list.js?v=1674925792"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+    <script src="/js/banner-priority.js?v=1699342638"></script>
+    <script src="/js/scripts.js?v=1699342638"></script>
+    <script>jQuery(function ($) {
+        jQuery('#w0').yiiActiveForm([{ "id": "freeplacessearch-iin", "name": "iin", "container": ".field-freeplacessearch-iin", "input": "#freeplacessearch-iin", "validate": function (attribute, value, messages, deferred, $form) { yii.validation.string(value, messages, { "message": "«Баланың ЖСН» мәні мәтін болуы керек.", "skipOnEmpty": 1 }); } }, { "id": "freeplacessearch-requestnumber", "name": "requestNumber", "container": ".field-freeplacessearch-requestnumber", "input": "#freeplacessearch-requestnumber", "validate": function (attribute, value, messages, deferred, $form) { yii.validation.number(value, messages, { "pattern": /^[+-]?\d+$/, "message": "«Request Number» мәні бүтін сан болу керек.", "skipOnEmpty": 1 }); } }], []);
+        var lang = $('body').data('lang');
+        var city = $('body').data('city');
+        var d = new Date(2024, 9, 3, 0, 32, 46);
+        function refreshTime() { $.post('/' + lang + '/gettime', function (data) { var jsd = data; d = new Date(jsd.y, jsd.m, jsd.d, jsd.h, jsd.min, jsd.s); update(); }); }
+        refreshTime();
+        function update() {
+          var month = (d.getMonth() + 1) < 10 ? '0' + (d.getMonth() + 1) : d.getMonth() + 1;
+          var day = d.getDate() < 10 ? '0' + d.getDate() : d.getDate();
+          var year = d.getFullYear();
+          var hours = d.getHours() == 0 ? '00' : d.getHours();
+          var minutes = d.getMinutes() < 10 ? '0' + d.getMinutes() : d.getMinutes();
+          var seconds = d.getSeconds() < 10 ? '0' + d.getSeconds() : d.getSeconds();
+          d.setSeconds(d.getSeconds() + 1);
+          $('#clock-text').text((year + '.' + month + '.' + day + ' ' + hours + ':' + minutes));
+        }
+        update();
+        window.setInterval(update, 1000);
+        window.setInterval(refreshTime, 1000 * 60 * 5);
+      });</script>
+  </div>
+</body>
+
+</html>
+
+
+<div class="fake-block" data-busy="false">
+  <div class="fb-body">
+    <div class="fb-title">Техникалық қолдау қол жетімсіз</div>
+  </div>
+</div>
+
+<style>
+  .leaf_baff {
+    height: 33px;
+    overflow: hidden;
+    position: absolute;
+    z-index: 6;
+    border-radius: 0 24px 0 0 !important;
+    right: 0;
+    top: 0;
+    width: 33px;
+  }
+
+  .cssLeaf {
+    height: 32px;
+    width: 32px;
+  }
+</style>
+
+<div class="video-modal-wrap">
+  <div class="modal-block modal-video" data-modal-close>
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="modal-close" data-modal-close>X</div>
+        <iframe width="100%" height="371" frameborder="0" allowfullscreen id="video-iframe"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
