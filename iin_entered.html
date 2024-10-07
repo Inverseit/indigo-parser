@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
         <meta name="theme-color" content="#3f51b5">
         <meta name="csrf-param" content="_csrf-frontend">
-<meta name="csrf-token" content="NJrJaFrjYywYjeZ9IGdsEBETHBCm7IyfBUqYpOKA3PVTzZ8FPpZaWkHL0U8TEiRhWktuX9O85u03JKr1rLSYwg==">
+<meta name="csrf-token" content="jzBGsL1xd6QCFswVXY86oxQs86uvHaiO0PlZzfMyzA7deQfC2hMd0m4hiXYs2lHIYhqlw8tryvm-zTv53kebWg==">
         <title>Вход в Личный кабинет</title>
         <link rel="icon" type="image/png" href="/favicon.png" />
 
@@ -228,7 +228,7 @@
                 </div>
                                     <div id="clock" class="clock-block ml-auto align-self-center">
                         Эталонное время сервера                        :
-                        <span id="clock-text">2024.10.03 00:39</span>
+                        <span id="clock-text">2024.10.08 00:40</span>
                     </div>
                                 <div class="ml-auto align-self-center city-seletc-block">
 	<a href="#" class="city-seletc" data-toggle="modal" data-target="#cityModal">
@@ -384,7 +384,7 @@
         <div class="col-12">
             <h4 class="font-weight-bold text-uppercase pb-2">Шаг 2</h4>
             <form id="login-submit-form" class="login-form d-flex flex-column align-items-start" action="/ru/cabinet/personal/login/check" method="post">
-<input type="hidden" name="_csrf-frontend" value="NJrJaFrjYywYjeZ9IGdsEBETHBCm7IyfBUqYpOKA3PVTzZ8FPpZaWkHL0U8TEiRhWktuX9O85u03JKr1rLSYwg==">            <div class="form-group w-100">
+<input type="hidden" name="_csrf-frontend" value="jzBGsL1xd6QCFswVXY86oxQs86uvHaiO0PlZzfMyzA7deQfC2hMd0m4hiXYs2lHIYhqlw8tryvm-zTv53kebWg==">            <div class="form-group w-100">
                 <label class="d-block font-size-sm text-muted mb-3" for="secureKey">
                     Введите пароль, от Личного кабинета                </label>
 
@@ -572,7 +572,7 @@ $('#fingerprint').val(result);
 })
     var lang = $('body').data('lang');
     var city = $('body').data('city');
-    var d = new Date(2024,9,3,0,39,58);
+    var d = new Date(2024,9,8,0,40,4);
     function refreshTime() { $.post('/' + lang + '/gettime', function(data) { var jsd = data; d = new Date(jsd.y, jsd.m, jsd.d, jsd.h, jsd.min, jsd.s); update(); }); }
     refreshTime();
     function update() {
