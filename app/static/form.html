@@ -68,7 +68,7 @@
     <input type="text" id="iin" name="iin" required>
 
     <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required>
+    <input type="text " id="password" name="password" required>
 
     <label for="name">Name:</label>
     <input type="text" id="name" name="name" required>
@@ -92,7 +92,12 @@
     <label for="second">Second:</label>
     <input type="number" id="second" name="second" required min="0" max="59">
 
-    <button type="submit">Submit</button>
+    <div style="display: flex; justify-content: start; align-items: center; height: 30px">
+      <input style="display: block; width: 50px; height: 40px" type="checkbox" id="qr_enabled" name="qr_enabled">
+      <label style="display: block; width: 50px" for="qr_enabled">QR&nbsp;code?:</label>
+    </div>
+
+    <button type="submit" id="submit_button">Submit</button>
   </form>
 
   <script>
@@ -804,6 +809,13 @@
       e.preventDefault();
       const formData = new FormData(this);
       const data = Object.fromEntries(formData.entries());
+      if (data.qr_enabled === 'on') {
+        data.qr_enabled = true;
+      } else {
+        data.qr_enabled = false;
+      }
+      formData.append('qr_enabled', data.qr_enabled);
+      console.log("disabling button");
       console.log('Form data:', data);
       // Here you would typically send the data to your server
       fetch('/access', {

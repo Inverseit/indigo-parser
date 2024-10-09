@@ -22,25 +22,15 @@ def setup():
     driver = webdriver.Chrome(options=chrome_options)
     return driver
 
-def login_till_search(driver, domain, iin, password, qr = False):
-    print(f"login_till_search qr={qr}") 
+def login_till_search(driver, domain, iin, password):
     # Step 1: Open the login page
     login_page_url = f"https://indigo-{domain}.e-orda.kz/{site_language}/cabinet/personal/login"
     print(login_page_url)
     driver.get(login_page_url)
 
-    try:
     # Step 2: Wait for the banner to be clickable and close it
-      driver.execute_script("document.getElementById('banner-indigo').style.display = 'none';")
-    except:
-      print("Banner not found")
+    driver.execute_script("document.getElementById('banner-indigo').style.display = 'none';")
     
-    try:
-      # make .attention-info to be hidden by injecting css
-      driver.execute_script("document.querySelector('.attention-info').style.display = 'none';")
-    except:
-      print("Attention info not found")
-      
 
     wait = WebDriverWait(driver, 10)  # 10 second timeout
     # Step 3: Fill in the IIN field
@@ -57,55 +47,50 @@ def login_till_search(driver, domain, iin, password, qr = False):
     # Step 4: Submit the form (click the "Продолжить" button)
     submit_button = driver.find_element(By.CSS_SELECTOR, "button[type='submit']")
     submit_button.click()
-    
-    print("IIN submitted successfully.")
 
     # Step 6: Wait for the password field to be interactable
     password_input = wait.until(EC.element_to_be_clickable((By.ID, "secureKey")))
     password_input.send_keys(password)
-    
-    if qr:
-      print("QR code detected, waiting for 5 seconds")
-      time.sleep(5)
 
-    wait = WebDriverWait(driver, 50)  # 50 second timeout
     # Step 7: Submit the password form (click the "Войти" button)
     login_button = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "button[type='submit']")))
     login_button.click()
 
-    # wait = WebDriverWait(driver, 5)  # 50 second timeout
-    # # Step 8: Wait for the form to be available and retrieve the CSRF token and other fields
-    # form = wait.until(EC.presence_of_element_located((By.ID, "w1")))
+    # Step 8: Wait for the form to be available and retrieve the CSRF token and other fields
+    form = wait.until(EC.presence_of_element_located((By.ID, "w1")))
     
-    # csrf_token = form.find_element(By.NAME, "_csrf-frontend")
-    # iin_value = form.find_element(By.ID, "reserveform-iin")
-    # request_number = form.find_element(By.ID, "reserveform-requestnumber")
+    csrf_token = form.find_element(By.NAME, "_csrf-frontend")
+    iin_value = form.find_element(By.ID, "reserveform-iin")
+    request_number = form.find_element(By.ID, "reserveform-requestnumber")
 
-    # # You can print these values for verification if needed
-    # print(csrf_token.get_attribute("value"))
-    # print(iin_value.get_attribute("value"))
-    # print(request_number.get_attribute("value"))
+    # You can print these values for verification if needed
+    print(csrf_token.get_attribute("value"))
+    print(iin_value.get_attribute("value"))
+    print(request_number.get_attribute("value"))
 
-    # # Step 9: Find and click the submit button within the form
-    # submit_button = form.find_element(By.CSS_SELECTOR, "button[type='submit']")
-    # submit_button.click()
-    
+    # Step 9: Find and click the submit button within the form
+    submit_button = form.find_element(By.CSS_SELECTOR, "button[type='submit']")
+    submit_button.click()
+
+    # Step 10: Wait for the next form, verify the CSRF token, and submit the form
+    form = wait.until(EC.presence_of_element_located((By.ID, "w0")))
+    csrf_token = form.find_element(By.NAME, "_csrf-frontend")
+    print("CSRF Token:", csrf_token.get_attribute("value"))
+
+    submit_button = form.find_element(By.CSS_SELECTOR, "button[type='submit']")
+    submit_button.click()
+    print("Last form submitted successfully.")
     time.sleep(1)
-    
-    driver.get(f"https://indigo-{domain}.e-orda.kz/{site_language}/reserv/get")
-    
+    # Step 10: Wait for the next form, verify the CSRF token, and submit the form
+    form = wait.until(EC.presence_of_element_located((By.ID, "w0")))
+
+    submit_button = form.find_element(By.CSS_SELECTOR, "button[type='submit']")
+    submit_button.click()
+    print("Final form submitted successfully.")
     time.sleep(1)
+
 
 def _run_registration(driver, kindergarten_name):
-  wait = WebDriverWait(driver, 10)  # 50 second timeout
-  # Step 10: Wait for the next form, verify the CSRF token, and submit the form
-  form = wait.until(EC.presence_of_element_located((By.ID, "w0")))
-  csrf_token = form.find_element(By.NAME, "_csrf-frontend")
-  print("CSRF Token:", csrf_token.get_attribute("value"))
-
-  submit_button = form.find_element(By.CSS_SELECTOR, "button[type='submit']")
-  submit_button.click()
-  time.sleep(1)
   # Find the search input field
   wait = WebDriverWait(driver, 20)  # 20 second timeout
   search_input =  wait.until(EC.visibility_of_element_located((By.ID, "search-word")))
@@ -113,11 +98,12 @@ def _run_registration(driver, kindergarten_name):
   # Enter the NAME into the search field
   search_input.clear()  # Clear any existing text
   search_input.send_keys(kindergarten_name)
+  import time
 
   search_input.send_keys(Keys.RETURN)
 
   # Wait for the search results to load
-  time.sleep(1.5)
+  time.sleep(0.5)
 
   # Find all forms within the search results
   forms = driver.find_elements(By.CSS_SELECTOR, ".free-places-result-block form")
@@ -135,23 +121,23 @@ def _run_registration(driver, kindergarten_name):
   # Wait for the next page to load
   time.sleep(0.5)
 
-  wait = WebDriverWait(driver, 10)
+  # wait = WebDriverWait(driver, 10)
 
-  try:
+  # try:
       # Find the form
-      form = wait.until(EC.presence_of_element_located((By.ID, "w0")))
+      # form = wait.until(EC.presence_of_element_located((By.ID, "w0")))
       # Find the submit button within the form
-      submit_button = form.find_element(By.CSS_SELECTOR, "button[type='submit']")
+      # submit_button = form.find_element(By.CSS_SELECTOR, "button[type='submit']")
       
       # Click the submit button
-      submit_button.click()
+      # submit_button.click()
       
-      print("Form submitted successfully.")
-  except Exception as e:
-      print(f"An error occurred: {str(e)}")
+      # print("Form submitted successfully.")
+  # except Exception as e:
+     #  print(f"An error occurred: {str(e)}")
 
   # Wait for the next page to load
-  time.sleep(0.5)
+  # time.sleep(0.5)
 
 async def run_scheduled_script(driver, kindergarten_name, should_run_now, hour=6, minute=59, second=59):
     if should_run_now:
@@ -189,9 +175,8 @@ async def run_scheduled_script(driver, kindergarten_name, should_run_now, hour=6
         return  # Exit after execution
 
     
-async def run_everything(driver, iin, password, kindergarten_name, region, hour, minute, second, should_run_now = False, qr = False):
-    print(f"qr={qr}") 
-    login_till_search(driver, region, iin, password, qr = qr)
+async def run_everything(driver, iin, password, kindergarten_name, region, hour, minute, second, should_run_now = False):
+    login_till_search(driver, region, iin, password)
     
     # wait until the specified hours and minutes is reached, astana time morning at 6:59:59
     await run_scheduled_script(driver, kindergarten_name, should_run_now, hour=hour, minute=minute, second=second)

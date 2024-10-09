@@ -1,3 +1,5 @@
+from typing import Optional
+from selenium.webdriver.chrome.webdriver import WebDriver
 from fastapi import FastAPI, Request, Form
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
@@ -5,6 +7,7 @@ from contextlib import asynccontextmanager
 from utils import run_everything, setup
 import asyncio
 import uvicorn
+import socket
 
 # Define the app with the lifespan context
 app = FastAPI()
@@ -13,7 +16,7 @@ app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 # Global variable to store the Selenium driver
-driver = None
+driver: Optional[WebDriver] = None
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -41,19 +44,29 @@ async def access(
     city: str = Form(...),
     hour: int = Form(...),
     minute: int = Form(...),
-    second: int = Form(...)
+    second: int = Form(...),
+    qr_enabled: bool = Form(...)
 ):
     global driver
-    if driver is None:
-        driver = setup()  # Initialize the driver when the first request comes
+    # always close the driver before starting a new one
+    if driver is not None:
+        driver.quit()
+        print("Driver shut down.")
+    driver = setup()
 
     # Print form data for verification
-    print(iin, password, name, city, hour, minute, second)
+    print(iin, password, name, city, hour, minute, second, qr_enabled)
 
     # Run your task with the driver
-    await run_everything(driver, iin, password, name, city, hour, minute, second)
+    await run_everything(driver, iin, password, name, city, hour, minute, second, qr=qr_enabled)
 
     return {"message": "Form submitted successfully."}
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+  port = 8000
+  while True:
+    try:
+      uvicorn.run(app, host="0.0.0.0", port=port)
+      break
+    except socket.error:
+      port += 1
