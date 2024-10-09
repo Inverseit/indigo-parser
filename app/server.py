@@ -32,7 +32,7 @@ app = FastAPI(lifespan=lifespan)
 
 @app.get("/", response_class=HTMLResponse)
 async def read_form():
-    with open("static/form.html", "r") as f:
+    with open("static/form.html", "r", encoding="utf-8") as f:
         return f.read()
 
 @app.post("/access")
