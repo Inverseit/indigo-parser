@@ -45,15 +45,22 @@ def login_till_search(driver, domain, iin, password, qr=False):
     driver.find_element(By.CSS_SELECTOR, "button[type='submit']").click()
     
     print("IIN submitted successfully.")
-
+    
     password_input = wait.until(EC.element_to_be_clickable((By.ID, "secureKey")))
     password_input.send_keys(password)
+
+    try:
+        driver.execute_script("document.querySelector('.banner-wrap').style.display = 'none';")
+    except:
+        print("Banner or attention info not found")
     
     if qr:
         print("QR code detected, waiting for 5 seconds")
         time.sleep(5)
 
     wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "button[type='submit']"))).click()
+    
+    time.sleep(2)
 
     driver.get(f"https://indigo-{domain}.e-orda.kz/{site_language}/reserv/get")
 
