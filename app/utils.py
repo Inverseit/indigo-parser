@@ -111,11 +111,14 @@ async def run_scheduled_script(driver, kindergarten_name, should_run_now, hour=6
         wait_seconds = (target_datetime - kz_time).total_seconds()
         
         if wait_seconds < 0:
-            target_datetime += timedelta(days=1)
-            wait_seconds = (target_datetime - kz_time).total_seconds()
+          pass
 
         print(f"Waiting for {wait_seconds} seconds")
-        await asyncio.sleep(wait_seconds)
+        i = 0
+        while i < wait_seconds:
+            await asyncio.sleep(1)
+            i += 1
+            print(f"Waiting for {wait_seconds - i} seconds")
 
         print(f"Executing script at {datetime.datetime.now(timezone)}")
         _run_registration(driver, kindergarten_name)
