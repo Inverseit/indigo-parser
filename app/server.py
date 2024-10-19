@@ -5,7 +5,6 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from contextlib import asynccontextmanager
 from utils import run_everything, setup
-import asyncio
 import uvicorn
 import socket
 
@@ -42,10 +41,11 @@ async def access(
     password: str = Form(...),
     name: str = Form(...),
     city: str = Form(...),
-    hour: int = Form(...),
-    minute: int = Form(...),
-    second: int = Form(...),
-    qr_enabled: bool = Form(...)
+    hour: int = Form(6),  # Default to 6
+    minute: int = Form(59),  # Default to 59
+    second: int = Form(59),  # Default to 59
+    millisecond: int = Form(500),  # Default to 500
+    qr_enabled: bool = Form(False)
 ):
     global driver
     # always close the driver before starting a new one
@@ -55,10 +55,10 @@ async def access(
     driver = setup()
 
     # Print form data for verification
-    print(iin, password, name, city, hour, minute, second, qr_enabled)
+    print(iin, password, name, city, hour, minute, second, millisecond, qr_enabled)
 
     # Run your task with the driver
-    await run_everything(driver, iin, password, name, city, hour, minute, second, qr=qr_enabled)
+    await run_everything(driver, iin, password, name, city, hour, minute, second, millisecond, qr=qr_enabled)
 
     return {"message": "Form submitted successfully."}
 
